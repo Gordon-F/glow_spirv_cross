@@ -1,0 +1,22 @@
+[package]
+name = "glow_spirv_cross"
+version = "0.1.0"
+edition = "2018"
+
+[features]
+gl = ["glutin", "glow/glutin"]
+webgl = ["std_web", "webgl_stdweb", "glow/stdweb"]
+
+[dependencies]
+glow = { version = "0.4.0", default-features=false, features = ["stdweb", "glutin"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+glutin = { version = "0.22.0-alpha3", optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+std_web  = { version = "0.4.18", package = "stdweb", optional = true }
+webgl_stdweb = { version = "0.3", optional = true }
+
+[build-dependencies]
+glsl-to-spirv = "0.1.7"
+spirv_cross = { version = "0.16", features = ["glsl"]}

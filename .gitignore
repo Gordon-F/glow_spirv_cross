@@ -1,0 +1,7 @@
+.idea
+.vscode
+**/target
+**/*.rs.bk
+**/assets
+*.a
+*.DS_Store
